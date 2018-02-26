@@ -1,0 +1,25 @@
+<mat-card>
+    <div class="example-container"> 
+        <mat-form-field>
+          <input matInput [(ngModel)]="searchWord" placeholder="Search" required #uname="ngModel">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <div *ngIf="uname.invalid"> 
+            Word required. 
+        </div> 
+        <span style="text-align:end;">
+            <button [disabled]="uname.invalid" (click)="search()" mat-raised-button color="primary" mat-button>Search</button>
+        </span>
+
+        <div *ngIf="countWords"> 
+            Count words: {{countWords}}
+        </div> 
+    </div>
+</mat-card>
+
+<div *ngIf="status">
+    <mat-card *ngFor="let publication of publications"  style="margin-top:5px;">
+        {{ publication.text }}
+    </mat-card>
+</div>
+
